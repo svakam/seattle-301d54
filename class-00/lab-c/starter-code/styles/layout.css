@@ -32,3 +32,41 @@ nav, article, aside, footer section {
     font-size: .65em;
     text-transform: uppercase;
   }
+
+  .date {
+    float: left;
+  }
+
+  .print {
+    text-decoration: none;
+    padding-left: 30px;
+    float: right;
+  }
+
+  aside {
+    padding-top: 30px;
+    padding-bottom: 60px
+  }
+  
+  aside img {
+    float: left;
+  }
+
+  aside p {
+    padding-left: 100px;
+    width: 65%;
+    margin: 0;
+    text-indent: 0;
+  }
+
+  section hr {
+    border-bottom: 1px solid #eee;
+    height: 0;
+  }
+
+  footer section p{
+    padding: 50px 0;
+    line-height: 1.5em;
+    text-align: center;
+    color: #aaa;
+  }
