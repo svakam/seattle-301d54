@@ -1,9 +1,11 @@
+'use strict';
+
 // GOAL: render each dog and their info to the index page
-  // call a render method on each dog instance
+// call a render method on each dog instance
 
 const dogArray = [];
 
-function Dog(dogObj){
+function Dog(dogObj) {
   this.name = dogObj.name;
   this.image_url = dogObj.image_url;
   this.hobbies = dogObj.hobbies;
@@ -11,8 +13,8 @@ function Dog(dogObj){
   dogArray.push(this);
 }
 
-Dog.prototype.render = function(){
-  // make a template
+Dog.prototype.render = function () {
+  // make a templatex`
   const myTemplate = $('#dog-template').html();
 
   // make a new section
@@ -39,3 +41,9 @@ $.get('data.json', data => {
     new Dog(dog).render();
   })
 })
+
+// $.get('data.json', function (dogs) {
+  // for (let i = 0; i < dogs.length; i++) {
+    // new Dog(dogs[i]).render();
+  // }
+// });
