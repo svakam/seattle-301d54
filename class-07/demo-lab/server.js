@@ -25,15 +25,15 @@ const PORT = process.env.PORT || 3003;
 
 // routes
 app.get('/location', (request, response) => {
-  try{
+  try {
     const city = request.query.data;
-  
+
     const locationData = searchLatToLong(city);
-  
+
     console.log(locationData);
     response.send(locationData);
   }
-  catch(error){
+  catch (error) {
     console.error(error); // will turn the error message red if the environment supports it
 
     response.status(500).send('so sorry, something is not working on our end');
@@ -44,20 +44,20 @@ app.get('*', (request, response) => {
   response.status(404).send('huh?');
 })
 
-function searchLatToLong(location){
+function searchLatToLong(location) {
   const geoData = require('./data/geo.json');
 
   let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${process.env.GEOCODE_API_KEY}`;
 
   superagent.get(url)
     .then(results => {
-      
-      console.log(results.body)
+
+      console.log(results.body);
       // const locationObject = new Location(location, results);
 
       // console.log(locationObject)
       // return locationObject;
-    
+
     });
 
 
@@ -67,7 +67,7 @@ function searchLatToLong(location){
 
 }
 
-function Location(city, geoData){
+function Location(city, geoData) {
   this.search_query = city;
   this.formatted_query = geoData.results[0].formatted_address;
   this.latitude = geoData.results[0].geometry.location.lat;
