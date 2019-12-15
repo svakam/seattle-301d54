@@ -20,20 +20,19 @@ app.get('/', (request, response) => {
 app.get('/add', (request, response) => {
   let firstName = request.query.first;
   let lastName = request.query.last;
-  
+
   let sql = 'INSERT INTO people (first_name, last_name) VALUES ($1, $2);';
   let safeValues = [firstName, lastName];
 
   client.query(sql, safeValues)
-
 
   // check the database
   let sql = 'SELECT * FROM people WHERE name=$1;';
   let safeValues = ['steven'];
 
   client.query(sql, safeValues)
-    .then(results => {
-      
+    .then(results => { // object from postgres - saying what happened to the queryj
+
     })
 })
 
@@ -45,5 +44,5 @@ app.get('*', (request, response) => {
 client.connect()
   .then(() => {
     app.listen(PORT, () => console.log(`listening on ${PORT}`));
-})
+  })
   .catch((err) => console.error(err));
